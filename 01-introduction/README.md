@@ -288,7 +288,7 @@ When you run this example with `tsx 01-introduction/code/02-message-types.ts`, y
 
 Google Gemini gives you access to multiple AI models via the OpenAI Compatibility API. Let's compare them!
 
-**You're building an app and need to choose which model to use.** Should you use `gemini-3.8-flash` (more capable but costlier) or `gemini-3.1-flash-lite` (faster and cheaper)?
+**You're building an app and need to choose which model to use.** Should you use `gemini-3.5-flash-lite` (newer version with improved quality) or `gemini-3.1-flash-lite` (ultra-fast and lightweight)?
 
 Think of it like choosing between calculators: a scientific calculator handles complex equations but takes more time and resources, while a basic calculator is fast and efficient for simple math. The best way to decide is to test both with your actual prompts and compare their responses.
 
@@ -312,11 +312,14 @@ async function compareModels() {
   console.log("🔬 Comparing AI Models\n");
 
   const prompt = "Explain recursion in programming in one sentence.";
-  const models = ["gemini-3.1-flash-lite", "gemini-3.8-flash"];
+  const models = ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite"];
 
   for (const modelName of models) {
     console.log(`\n📊 Testing: ${modelName}`);
     console.log("─".repeat(50));
+
+    // Wait a couple of seconds to respect free-tier rate limits
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Override the model for this test
     const model = new ChatOpenAI({
@@ -335,9 +338,9 @@ async function compareModels() {
 
   console.log("\n✅ Comparison complete!");
   console.log("\n💡 Key Observations:");
-  console.log("   - gemini-3.8-flash is more capable and detailed for complex reasoning");
-  console.log("   - gemini-3.1-flash-lite is faster and well-suited for high-volume tasks");
-  console.log("   - Choose based on your needs: speed vs. capability");
+  console.log("   - gemini-3.5-flash-lite offers newer capabilities and improved quality");
+  console.log("   - gemini-3.1-flash-lite is an ultra-fast, lightweight option");
+  console.log("   - API latency can vary based on queueing, cold starts, and free-tier throttling");
 }
 
 compareModels().catch(console.error);
@@ -355,41 +358,41 @@ When you run this example with `tsx 01-introduction/code/03-model-comparison.ts`
 🔬 Comparing AI Models
 
 
-📊 Testing: gemini-3.8-flash
-──────────────────────────────────────────────────
-Response: Recursion in programming is a technique where a function calls itself to solve smaller instances of the same problem until it reaches a base case.
-⏱️  Time: 2134ms
-
 📊 Testing: gemini-3.1-flash-lite
 ──────────────────────────────────────────────────
-Response: Recursion is when a function calls itself to solve a problem by breaking it down into smaller, similar sub-problems.
-⏱️  Time: 1845ms
+Response: Recursion is a programming technique where a function calls itself to solve a complex problem by breaking it down into smaller, more manageable sub-problems of the same type.
+⏱️  Time: 6547ms
+
+📊 Testing: gemini-3.5-flash-lite
+──────────────────────────────────────────────────
+Response: Recursion is a programming technique where a function calls itself to solve smaller instances of the exact same problem until it reaches a fundamental base case.
+⏱️  Time: 5210ms
 
 ✅ Comparison complete!
 
 💡 Key Observations:
-   - gemini-3.8-flash is more capable and detailed
-   - gemini-3.1-flash-lite is faster and uses fewer resources
-   - Choose based on your needs: speed vs. capability
+   - gemini-3.5-flash-lite offers newer capabilities and improved quality
+   - gemini-3.1-flash-lite is an ultra-fast, lightweight option
+   - API latency can vary based on queueing, cold starts, and free-tier throttling
 ```
 
-> **Note**: Your AI's response may vary slightly from this example, and timing will depend on your network connection and API load. This is normal - LLMs generate different responses each time.
+> **Note**: Your AI's response and latency will vary. On free tiers, response times can fluctuate from a few seconds up to 1-2 minutes depending on server load, request queuing, and rate limits.
 
 ### How It Works
 
 **What's happening**:
 1. We define a single prompt asking about recursion
-2. We loop through two different models: `gemini-3.8-flash` and `gemini-3.1-flash-lite`
+2. We loop through two different models: `gemini-3.1-flash-lite` and `gemini-3.5-flash-lite`
 3. For each model, we create a new `ChatOpenAI` instance with that model name
 4. We invoke the same prompt on each model
 5. We display the response from each model for comparison
 
 **What you'll notice**:
-- Different models have different response styles
-- `gemini-3.8-flash` tends to be more detailed and sophisticated
-- `gemini-3.1-flash-lite` is more concise but still accurate
+- Different models have different response phrasing and nuances
+- `gemini-3.5-flash-lite` is a newer release with refined generation quality
+- `gemini-3.1-flash-lite` is an ultra-lightweight option optimized for speed and cost
 - Both answers are correct, just expressed differently
-- `gemini-3.8-flash` is more capable for complex tasks, `gemini-3.1-flash-lite` is faster and cheaper for simple tasks
+- Free-tier rate limits and server load can cause noticeable latency fluctuations
 
 ---
 
