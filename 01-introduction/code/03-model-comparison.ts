@@ -14,7 +14,7 @@ async function compareModels() {
   console.log("🔬 Comparing AI Models\n");
 
   const prompt = "Explain recursion in programming in one sentence.";
-  const models = ["gemini-2.5-pro", "gemini-3.8-flash"];
+  const models = ["gemini-3.8-flash", "gemini-3.8-flash-lite"];
 
   for (const modelName of models) {
     console.log(`\n📊 Testing: ${modelName}`);
@@ -37,8 +37,8 @@ async function compareModels() {
 
   console.log("\n✅ Comparison complete!");
   console.log("\n💡 Key Observations:");
-  console.log("   - gemini-2.5-pro is more capable and detailed for complex reasoning");
-  console.log("   - gemini-3.8-flash is faster and well-suited for high-volume tasks");
+  console.log("   - gemini-3.8-flash is more capable and detailed for complex reasoning");
+  console.log("   - gemini-3.8-flash-lite is faster and well-suited for high-volume tasks");
   console.log("   - Choose based on your needs: speed vs. capability");
 }
 

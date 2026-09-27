@@ -288,7 +288,7 @@ When you run this example with `tsx 01-introduction/code/02-message-types.ts`, y
 
 Google Gemini gives you access to multiple AI models via the OpenAI Compatibility API. Let's compare them!
 
-**You're building an app and need to choose which model to use.** Should you use `gemini-2.5-pro` (more capable but costlier) or `gemini-3.8-flash` (faster and cheaper)?
+**You're building an app and need to choose which model to use.** Should you use `gemini-3.8-flash` (more capable but costlier) or `gemini-3.8-flash-lite` (faster and cheaper)?
 
 Think of it like choosing between calculators: a scientific calculator handles complex equations but takes more time and resources, while a basic calculator is fast and efficient for simple math. The best way to decide is to test both with your actual prompts and compare their responses.
 
@@ -312,7 +312,7 @@ async function compareModels() {
   console.log("🔬 Comparing AI Models\n");
 
   const prompt = "Explain recursion in programming in one sentence.";
-  const models = ["gemini-2.5-pro", "gemini-3.8-flash"];
+  const models = ["gemini-3.8-flash", "gemini-3.8-flash-lite"];
 
   for (const modelName of models) {
     console.log(`\n📊 Testing: ${modelName}`);
@@ -335,8 +335,8 @@ async function compareModels() {
 
   console.log("\n✅ Comparison complete!");
   console.log("\n💡 Key Observations:");
-  console.log("   - gemini-2.5-pro is more capable and detailed for complex reasoning");
-  console.log("   - gemini-3.8-flash is faster and well-suited for high-volume tasks");
+  console.log("   - gemini-3.8-flash is more capable and detailed for complex reasoning");
+  console.log("   - gemini-3.8-flash-lite is faster and well-suited for high-volume tasks");
   console.log("   - Choose based on your needs: speed vs. capability");
 }
 
