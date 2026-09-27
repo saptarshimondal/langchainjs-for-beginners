@@ -115,77 +115,23 @@ tsx myfile.ts
 
 ---
 
-## Set Up Microsoft Foundry
+## Set Up Gemini API
 
-This course uses **Microsoft Foundry** for AI models. You can follow the steps below or visit the [Deploy an Azure OpenAI model quickstart](https://learn.microsoft.com/azure/ai-foundry/quickstarts/get-started-code?tabs=azure-ai-foundry).
+This course uses **Google Gemini** for AI models. Since LangChain's OpenAI client supports Gemini via an OpenAI compatibility layer, we can seamlessly use Gemini without needing to rewrite any examples.
 
-While the course is designed for Microsoft Foundry, you can use any OpenAI-compatible provider. If you choose a different provider, you'll still need an API key and endpoint URL.
+### Get Your API Key
 
-### 1. Create a Microsoft Foundry Project
+1. Visit [Google AI Studio](https://aistudio.google.com/)
+2. Sign in with your Google account
+3. Click **Get API key** in the left navigation menu
+4. Click **Create API key**
+5. Copy the generated API key and save it securely
 
-1. Visit the [Microsoft Foundry portal](https://ai.azure.com/)
-2. Sign in with your Azure account
-3. Click **+ New project**
-4. Fill in the project details:
-   - **Project name**: `langchain-course` (or your preferred name)
-   - **Subscription**: Select your Azure subscription
-   - **Resource group**: Create new or select existing
-   - **Region**: Choose a region close to you (e.g., East US, West Europe)
-5. Click **Create** (the portal will automatically set up the necessary resources)
+### Why Gemini?
 
-### 2. Deploy Required Models
-
-You'll need to deploy three models for this course:
-
-**Deploy gpt-5-mini & gpt-5 (Chat Models):**
-
-1. In your project, go to **Models + endpoints** in the left navigation
-2. Click **+ Deploy model** → **Deploy base model**
-3. Search for and select **gpt-5-mini**
-4. Click **Confirm**
-5. Configure deployment:
-   - **Deployment name**: `gpt-5-mini` (keep this name for consistency)
-   - **Model version**: Select the latest available
-   - **Deployment type**: Global Standard
-   - Click **Deploy**
-6. Wait for deployment to complete
-7. Follow the same process and deploy `gpt-5` as well. Note that you may have to complete a form to request access to `gpt-5` if it's not immediately available to deploy.
-
-> [!NOTE]
-> If you cannot deploy `gpt-5`, use **`gpt-4.1`** as a fallback. It is available in Microsoft Foundry and uses the same OpenAI-compatible API. Keep the deployment name `gpt-4.1`, then use that name in the comparison example.
-
-> **Why deploy both chat models?** `gpt-5-mini` is used throughout the course for most examples (it's faster and more cost-effective). `gpt-5` (or `gpt-4.1` if `gpt-5` is unavailable) is used in Chapter 1 for model comparison exercises to demonstrate the performance and capability differences between models.
-
-**Deploy Text Embedding Model:**
-
-1. Click **+ Deploy model** → **Deploy base model** again
-2. Search for and select **text-embedding-3-small**
-3. Click **Confirm**
-4. Configure deployment:
-   - **Deployment name**: `text-embedding-3-small` (keep this name)
-   - **Model version**: Select the latest available
-   - **Deployment type**: Global Standard
-   - Click **Deploy**
-5. Wait for deployment to complete
-
-### 3. Get Your Configuration Values
-
-After deploying your models, you need two pieces of information:
-
-1. **API Key**:
-   - In your project, go to **Overview** in the left navigation
-   - Find **Endpoints and keys**
-   - Locate your **API Key**
-
-2. **Endpoint URL**:
-   - Locate the **Azure OpenAI** → **Azure OpenAI endpoint** value (looks like: `https://your-resource.openai.azure.com`)
-
-### Why Microsoft Foundry?
-
-- ✅ **Production-ready**: Enterprise-grade infrastructure and SLAs
-- ✅ **Higher limits**: More requests per minute than free tiers
-- ✅ **Additional features**: Private endpoints, content filtering, monitoring
-- ✅ **Azure integration**: Works seamlessly with other Azure services
+- ✅ **Free Tier Available**: Generous free tier for developers in most regions
+- ✅ **OpenAI Compatibility**: Works seamlessly with LangChain's OpenAI integrations
+- ✅ **Powerful Models**: Access to Gemini 3.8 Flash for fast, capable responses
 
 ---
 
@@ -211,16 +157,16 @@ Copy-Item .env.example .env
 
 #### Edit `.env` file:
 
-Open `.env` in your text editor and add your Microsoft Foundry credentials. Add `/openai/v1` to the end of your endpoint URL.
+Open `.env` in your text editor and add your Gemini credentials. Since we are using Gemini's OpenAI compatibility layer, configure it as follows:
 
 ```bash
-AI_API_KEY=your_microsoft_foundry_api_key
-AI_ENDPOINT=https://your-resource.openai.azure.com/openai/v1
-AI_MODEL=gpt-5-mini
-AI_EMBEDDING_MODEL=text-embedding-3-small
+AI_API_KEY=your_gemini_api_key_here
+AI_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/openai/
+AI_MODEL=gemini-3.8-flash
+AI_EMBEDDING_MODEL=gemini-embedding-2
 ```
 
-**Replace the API key and endpoint with the values from your Microsoft Foundry project.**
+**Replace the API key with your own from Google AI Studio ([aistudio.google.com](https://aistudio.google.com/)).**
 
 ---
 
