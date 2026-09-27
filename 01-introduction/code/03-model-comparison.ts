@@ -14,11 +14,14 @@ async function compareModels() {
   console.log("🔬 Comparing AI Models\n");
 
   const prompt = "Explain recursion in programming in one sentence.";
-  const models = ["gemini-3.8-flash", "gemini-3.8-flash-lite"];
+  const models = ["gemini-3.1-flash-lite", "gemini-3.8-flash"];
 
   for (const modelName of models) {
     console.log(`\n📊 Testing: ${modelName}`);
     console.log("─".repeat(50));
+
+    // Wait a couple of seconds to respect free-tier rate limits
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Override the model for this test
     const model = new ChatOpenAI({
