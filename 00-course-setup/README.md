@@ -188,8 +188,8 @@ tsx scripts/test-setup.ts
 🚀 Testing AI provider connection...
 
 ✅ SUCCESS! Your AI provider is working!
-   Provider: https://your-resource.openai.azure.com/openai/v1
-   Model: gpt-5-mini
+   Provider: https://generativelanguage.googleapis.com/v1beta/openai/
+   Model: gemini-3.8-flash
 
 Model response: Setup successful!
 
