@@ -14,7 +14,7 @@ async function compareModels() {
   console.log("🔬 Comparing AI Models\n");
 
   const prompt = "Explain recursion in programming in one sentence.";
-  const models = ["gpt-5", "gpt-5-mini"];
+  const models = ["gemini-2.5-pro", "gemini-3.8-flash"];
 
   for (const modelName of models) {
     console.log(`\n📊 Testing: ${modelName}`);
@@ -37,8 +37,8 @@ async function compareModels() {
 
   console.log("\n✅ Comparison complete!");
   console.log("\n💡 Key Observations:");
-  console.log("   - gpt-5 is more capable and detailed");
-  console.log("   - gpt-5-mini is faster and uses fewer resources");
+  console.log("   - gemini-2.5-pro is more capable and detailed for complex reasoning");
+  console.log("   - gemini-3.8-flash is faster and well-suited for high-volume tasks");
   console.log("   - Choose based on your needs: speed vs. capability");
 }
 

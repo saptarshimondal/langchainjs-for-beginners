@@ -286,9 +286,9 @@ When you run this example with `tsx 01-introduction/code/02-message-types.ts`, y
 
 ## 🔄 Comparing Models
 
-Microsoft Foundry gives you access to multiple AI models. Let's compare them!
+Google Gemini gives you access to multiple AI models via the OpenAI Compatibility API. Let's compare them!
 
-**You're building an app and need to choose which model to use.** Should you use `gpt-5` (more capable but costlier) or `gpt-5-mini` (faster and cheaper)?
+**You're building an app and need to choose which model to use.** Should you use `gemini-2.5-pro` (more capable but costlier) or `gemini-3.8-flash` (faster and cheaper)?
 
 Think of it like choosing between calculators: a scientific calculator handles complex equations but takes more time and resources, while a basic calculator is fast and efficient for simple math. The best way to decide is to test both with your actual prompts and compare their responses.
 
@@ -297,7 +297,7 @@ Think of it like choosing between calculators: a scientific calculator handles c
 Let's see how to programmatically compare different models side-by-side. 
 
 > [!NOTE]
-> You'll need both `gpt-5` (or another model like gpt-4.1) and `gpt-5-mini` deployed in Microsoft Foundry as described in [Course Setup](../00-course-setup/README.md#set-up-microsoft-foundry).
+> Ensure you have an active Gemini API key configured in your `.env` file as described in [Course Setup](../00-course-setup/README.md#set-up-gemini-api).
 
 **Code**: [`code/03-model-comparison.ts`](./code/03-model-comparison.ts)  
 **Run**: `tsx 01-introduction/code/03-model-comparison.ts`
@@ -312,7 +312,7 @@ async function compareModels() {
   console.log("🔬 Comparing AI Models\n");
 
   const prompt = "Explain recursion in programming in one sentence.";
-  const models = ["gpt-5", "gpt-5-mini"];
+  const models = ["gemini-2.5-pro", "gemini-3.8-flash"];
 
   for (const modelName of models) {
     console.log(`\n📊 Testing: ${modelName}`);
@@ -335,8 +335,8 @@ async function compareModels() {
 
   console.log("\n✅ Comparison complete!");
   console.log("\n💡 Key Observations:");
-  console.log("   - gpt-5 is more capable and detailed");
-  console.log("   - gpt-5-mini is faster and uses fewer resources");
+  console.log("   - gemini-2.5-pro is more capable and detailed for complex reasoning");
+  console.log("   - gemini-3.8-flash is faster and well-suited for high-volume tasks");
   console.log("   - Choose based on your needs: speed vs. capability");
 }
 
