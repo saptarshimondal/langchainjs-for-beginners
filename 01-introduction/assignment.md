@@ -65,9 +65,9 @@ import "dotenv/config";
 
 **Tasks**:
 1. Create a file called `model-performance.ts`
-2. Test at least 2 models available in Microsoft Foundry:
-   - `gpt-5` (or gpt-4.1 if that's what you deployed earlier)
-   - `gpt-5-mini`
+2. Test at least 2 models available in Google Gemini:
+   - `gemini-3.8-flash` (or gemini-2.5-pro if that's what you deployed earlier)
+   - `gemini-3.1-flash-lite`
 3. For each model, measure:
    - Response time
    - Response length (character count)
@@ -82,8 +82,8 @@ import "dotenv/config";
 ─────────────────────────────────────────────
 Model          | Time    | Length | Quality
 ─────────────────────────────────────────────
-gpt-5-mini     | 567ms   | 234ch  | ⭐⭐⭐⭐
-gpt-5          | 1234ms  | 456ch  | ⭐⭐⭐⭐⭐
+gemini-3.1-flash-lite     | 567ms   | 234ch  | ⭐⭐⭐⭐
+gemini-3.8-flash          | 1234ms  | 456ch  | ⭐⭐⭐⭐⭐
 ```
 
 **Success Criteria**:
@@ -101,8 +101,8 @@ import "dotenv/config";
 const question = "Explain the difference between machine learning and deep learning.";
 
 const models = [
-  { name: "gpt-5", description: "Most capable" },
-  { name: "gpt-5-mini", description: "Fast and efficient" },
+  { name: "gemini-3.8-flash", description: "Most capable" },
+  { name: "gemini-3.1-flash-lite", description: "Fast and efficient" },
 ];
 
 // 3. Create a function to test each model:

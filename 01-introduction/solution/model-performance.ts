@@ -11,8 +11,8 @@ import "dotenv/config";
 const question = "Explain the difference between machine learning and deep learning.";
 
 const models = [
-  { name: "gpt-5", description: "Most capable" },
-  { name: "gpt-5-mini", description: "Fast and efficient" },
+  { name: "gemini-3.8-flash", description: "Most capable" },
+  { name: "gemini-3.1-flash-lite", description: "Fast and efficient" },
 ];
 
 interface ModelResult {
@@ -107,8 +107,8 @@ async function compareModels() {
   console.log(`⚡ Fastest: ${fastest.name} (${fastest.time}ms)`);
   console.log(`📝 Most detailed: ${longest.name} (${longest.length} characters)`);
   console.log("\n🎯 Recommendations:");
-  console.log("   - Use gpt-5 for complex tasks needing detailed responses");
-  console.log("   - Use gpt-5-mini for quick responses and cost efficiency");
+  console.log("   - Use gemini-3.8-flash for complex tasks needing detailed responses");
+  console.log("   - Use gemini-3.1-flash-lite for quick responses and cost efficiency");
 }
 
 compareModels().catch(console.error);
