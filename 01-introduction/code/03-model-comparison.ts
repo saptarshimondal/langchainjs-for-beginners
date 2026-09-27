@@ -41,7 +41,7 @@ async function compareModels() {
   console.log("\n✅ Comparison complete!");
   console.log("\n💡 Key Observations:");
   console.log("   - gemini-3.8-flash is more capable and detailed for complex reasoning");
-  console.log("   - gemini-3.8-flash-lite is faster and well-suited for high-volume tasks");
+  console.log("   - gemini-3.1-flash-lite is faster and well-suited for high-volume tasks");
   console.log("   - Choose based on your needs: speed vs. capability");
 }
 

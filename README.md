@@ -40,7 +40,7 @@ This course contains **9 chapters** (setup + 8 chapters), each building on the p
 
 | # | Chapter | Description | Key Concepts |
 |---|---------|-------------|--------------|
-| 0 | [Course Setup](./00-course-setup/README.md) | Set up your development environment (local or cloud-based) | Node.js, Microsoft Foundry, Codespaces, environment variables |
+| 0 | [Course Setup](./00-course-setup/README.md) | Set up your development environment (local or cloud-based) | Node.js, Google Gemini, Codespaces, environment variables |
 | 1 | [Introduction to LangChain.js](./01-introduction/README.md) | Understanding the framework and core concepts | LangChain fundamentals, first LLM call |
 | 2 | [Chat Models & Basic Interactions](./02-chat-models/README.md) | Chat models, messages, and conversations | Message types, streaming, error handling, temperature |
 | 3 | [Prompts, Messages, and Structured Outputs](./03-prompts-messages-outputs/README.md) | Working with prompts, message arrays, and type-safe outputs | Messages, templates, structured outputs, Zod schemas |

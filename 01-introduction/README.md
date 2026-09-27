@@ -1,6 +1,6 @@
 # Introduction to LangChain.js
 
-Welcome to your first step in building AI-powered applications with LangChain.js! In this chapter, you'll learn what LangChain.js is and why it exists, explore its core concepts like models, prompts, and tools, and make your first AI call using Microsoft Foundry. By the end, you'll understand how LangChain.js provides a consistent interface for working with models through environment variables.
+Welcome to your first step in building AI-powered applications with LangChain.js! In this chapter, you'll learn what LangChain.js is and why it exists, explore its core concepts like models, prompts, and tools, and make your first AI call using Google Gemini. By the end, you'll understand how LangChain.js provides a consistent interface for working with models through environment variables.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ By the end of this chapter, you'll be able to:
 - ✅ Understand what LangChain.js is and why it exists
 - ✅ Recognize common AI application patterns
 - ✅ Set up a development environment
-- ✅ Make your first LLM call using Microsoft Foundry
+- ✅ Make your first LLM call using Google Gemini
 
 ---
 
@@ -99,7 +99,7 @@ flowchart LR
 
 ## 💻 Hands-On: Your First LLM Call
 
-Let's make your first AI call using LangChain.js and Microsoft Foundry!
+Let's make your first AI call using LangChain.js and Google Gemini!
 
 ### Example 1: Hello World
 
@@ -199,7 +199,7 @@ We read these from environment variables (`AI_MODEL`, `AI_ENDPOINT`, `AI_API_KEY
 - `AI_ENDPOINT` tells the application where to find the AI service
 - `AI_API_KEY` provides authentication credentials
 
-Storing these in `.env` means you can change Microsoft Foundry endpoints, keys, and models by updating the configuration file, not your code. It's like changing a phone number in your contacts. Same calling process, different destination.
+Storing these in `.env` means you can change Google Gemini endpoints, keys, and models by updating the configuration file, not your code. It's like changing a phone number in your contacts. Same calling process, different destination.
 
 ---
 
@@ -288,7 +288,7 @@ When you run this example with `tsx 01-introduction/code/02-message-types.ts`, y
 
 Google Gemini gives you access to multiple AI models via the OpenAI Compatibility API. Let's compare them!
 
-**You're building an app and need to choose which model to use.** Should you use `gemini-3.8-flash` (more capable but costlier) or `gemini-3.8-flash-lite` (faster and cheaper)?
+**You're building an app and need to choose which model to use.** Should you use `gemini-3.8-flash` (more capable but costlier) or `gemini-3.1-flash-lite` (faster and cheaper)?
 
 Think of it like choosing between calculators: a scientific calculator handles complex equations but takes more time and resources, while a basic calculator is fast and efficient for simple math. The best way to decide is to test both with your actual prompts and compare their responses.
 
@@ -312,7 +312,7 @@ async function compareModels() {
   console.log("🔬 Comparing AI Models\n");
 
   const prompt = "Explain recursion in programming in one sentence.";
-  const models = ["gemini-3.8-flash", "gemini-3.8-flash-lite"];
+  const models = ["gemini-3.1-flash-lite", "gemini-3.8-flash"];
 
   for (const modelName of models) {
     console.log(`\n📊 Testing: ${modelName}`);
@@ -336,7 +336,7 @@ async function compareModels() {
   console.log("\n✅ Comparison complete!");
   console.log("\n💡 Key Observations:");
   console.log("   - gemini-3.8-flash is more capable and detailed for complex reasoning");
-  console.log("   - gemini-3.8-flash-lite is faster and well-suited for high-volume tasks");
+  console.log("   - gemini-3.1-flash-lite is faster and well-suited for high-volume tasks");
   console.log("   - Choose based on your needs: speed vs. capability");
 }
 
@@ -405,7 +405,7 @@ graph LR
     A --> E[Agents]
     A --> F[Memory]
     B --> G[Provider Abstraction]
-    G --> H[Microsoft Foundry]
+    G --> H[Google Gemini]
 ```
 
 *These concepts work together to create powerful AI applications. You'll explore each in depth throughout the course.*
@@ -444,7 +444,7 @@ Let's review what you learned:
 
 - **LangChain.js is an abstraction layer** - It provides a consistent interface across different LLM providers
 - **Built on composable components** - Models, prompts, tools, agents, and memory work together
-- **Microsoft Foundry provides the models** - Configure `AI_API_KEY`, `AI_ENDPOINT`, and `AI_MODEL` in your `.env` file
+- **Google Gemini provides the models** - Configure `AI_API_KEY`, `AI_ENDPOINT`, and `AI_MODEL` in your `.env` file
 - **Messages have types** - SystemMessage, HumanMessage, and AIMessage serve different purposes
 
 ---
@@ -462,7 +462,7 @@ The assignment includes:
 ## 📚 Additional Resources
 
 - [LangChain.js Concepts](https://js.langchain.com/docs/concepts)
-- [Microsoft Foundry Documentation](https://learn.microsoft.com/azure/foundry)
+- [Google Gemini API Documentation](https://ai.google.dev/gemini-api/docs)
 - [Chat Models Documentation](https://js.langchain.com/docs/integrations/chat)
 
 **💡 Want more examples?** Check out the [`samples/`](./samples/) folder for additional code examples that demonstrate other useful concepts and patterns!
@@ -487,8 +487,8 @@ You've laid the foundation in this chapter. Next, you'll start with basic AI con
 
 If you get stuck or have any questions about building AI apps, join:
 
-[![Microsoft Foundry Discord](https://img.shields.io/badge/Discord-Microsoft_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
+[![Google Gemini Discord](https://img.shields.io/badge/Discord-Google_Gemini_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://discord.gg/google-gemini)
 
 If you have product feedback or errors while building visit:
 
-[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+[![Google Gemini Developer Forum](https://img.shields.io/badge/GitHub-Google_Gemini_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://discuss.ai.google.dev/)
