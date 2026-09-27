@@ -6,7 +6,7 @@ hero:
   text: "for Beginners"
   tagline: "Build AI-powered applications with JavaScript and TypeScript using a modern, agent-first approach."
   image:
-    src: ./docs/images/LangChainjs.png
+    src: /docs/images/LangChainjs.png
     alt: LangChain.js Course
   actions:
     - theme: brand
