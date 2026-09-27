@@ -195,7 +195,7 @@ The `ChatOpenAI` constructor takes three key properties: `model` (which AI model
 We read these from environment variables (`AI_MODEL`, `AI_ENDPOINT`, `AI_API_KEY`) defined in your `.env` file. This keeps credentials out of code and lets you switch providers by updating `.env`.
 
 **Why use environment variables?**
-- `AI_MODEL` specifies which AI model to use (like `gpt-5-mini` or `gpt-5`)
+- `AI_MODEL` specifies which AI model to use (like `gemini-3.1-flash-lite` or `gemini-3.8-flash`)
 - `AI_ENDPOINT` tells the application where to find the AI service
 - `AI_API_KEY` provides authentication credentials
 
@@ -355,12 +355,12 @@ When you run this example with `tsx 01-introduction/code/03-model-comparison.ts`
 🔬 Comparing AI Models
 
 
-📊 Testing: gpt-5
+📊 Testing: gemini-3.8-flash
 ──────────────────────────────────────────────────
 Response: Recursion in programming is a technique where a function calls itself to solve smaller instances of the same problem until it reaches a base case.
 ⏱️  Time: 2134ms
 
-📊 Testing: gpt-5-mini
+📊 Testing: gemini-3.1-flash-lite
 ──────────────────────────────────────────────────
 Response: Recursion is when a function calls itself to solve a problem by breaking it down into smaller, similar sub-problems.
 ⏱️  Time: 1845ms
@@ -368,8 +368,8 @@ Response: Recursion is when a function calls itself to solve a problem by breaki
 ✅ Comparison complete!
 
 💡 Key Observations:
-   - gpt-5 is more capable and detailed
-   - gpt-5-mini is faster and uses fewer resources
+   - gemini-3.8-flash is more capable and detailed
+   - gemini-3.1-flash-lite is faster and uses fewer resources
    - Choose based on your needs: speed vs. capability
 ```
 
@@ -379,17 +379,17 @@ Response: Recursion is when a function calls itself to solve a problem by breaki
 
 **What's happening**:
 1. We define a single prompt asking about recursion
-2. We loop through two different models: `gpt-5` and `gpt-5-mini`
+2. We loop through two different models: `gemini-3.8-flash` and `gemini-3.1-flash-lite`
 3. For each model, we create a new `ChatOpenAI` instance with that model name
 4. We invoke the same prompt on each model
 5. We display the response from each model for comparison
 
 **What you'll notice**:
 - Different models have different response styles
-- `gpt-5` tends to be more detailed and sophisticated
-- `gpt-5-mini` is more concise but still accurate
+- `gemini-3.8-flash` tends to be more detailed and sophisticated
+- `gemini-3.1-flash-lite` is more concise but still accurate
 - Both answers are correct, just expressed differently
-- `gpt-5` is more capable for complex tasks, `gpt-5-mini` is faster and cheaper for simple tasks
+- `gemini-3.8-flash` is more capable for complex tasks, `gemini-3.1-flash-lite` is faster and cheaper for simple tasks
 
 ---
 
@@ -484,11 +484,6 @@ You've laid the foundation in this chapter. Next, you'll start with basic AI con
 ---
 
 ## 💬 Questions or stuck?
-
-If you get stuck or have any questions about building AI apps, join:
-
-[![Google Gemini Discord](https://img.shields.io/badge/Discord-Google_Gemini_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://discord.gg/google-gemini)
-
 If you have product feedback or errors while building visit:
 
 [![Google Gemini Developer Forum](https://img.shields.io/badge/GitHub-Google_Gemini_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://discuss.ai.google.dev/)
