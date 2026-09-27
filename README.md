@@ -2,11 +2,17 @@
 
 # LangChain.js for Beginners
 
+[![Live Documentation](https://img.shields.io/badge/📖_Live_Documentation-Visit_Website-2563eb?style=for-the-badge&logo=github-pages&logoColor=white)](https://saptarshimondal.github.io/langchainjs-for-beginners/)
 [![GitHub license](https://img.shields.io/github/license/microsoft/langchainjs-for-beginners.svg)](https://github.com/microsoft/langchainjs-for-beginners/blob/main/LICENSE)
 [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/langchainjs-for-beginners.svg)](https://github.com/microsoft/langchainjs-for-beginners/graphs/contributors/)
 [![GitHub issues](https://img.shields.io/github/issues/microsoft/langchainjs-for-beginners.svg)](https://github.com/microsoft/langchainjs-for-beginners/issues/)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/microsoft/langchainjs-for-beginners.svg)](https://github.com/microsoft/langchainjs-for-beginners/pulls/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+> [!IMPORTANT]
+> 🚀 **Read the interactive, web-formatted version of this course:**  
+> 👉 **[https://saptarshimondal.github.io/langchainjs-for-beginners/](https://saptarshimondal.github.io/langchainjs-for-beginners/)**  
+> Features full-text search, dark/light theme, interactive navigation, and formatted code blocks!
 
 ## 🚀 Welcome!
 
@@ -40,15 +46,15 @@ This course contains **9 chapters** (setup + 8 chapters), each building on the p
 
 | # | Chapter | Description | Key Concepts |
 |---|---------|-------------|--------------|
-| 0 | [Course Setup](./00-course-setup/README.md) | Set up your development environment (local or cloud-based) | Node.js, Google Gemini, Codespaces, environment variables |
-| 1 | [Introduction to LangChain.js](./01-introduction/README.md) | Understanding the framework and core concepts | LangChain fundamentals, first LLM call |
-| 2 | [Chat Models & Basic Interactions](./02-chat-models/README.md) | Chat models, messages, and conversations | Message types, streaming, error handling, temperature |
-| 3 | [Prompts, Messages, and Structured Outputs](./03-prompts-messages-outputs/README.md) | Working with prompts, message arrays, and type-safe outputs | Messages, templates, structured outputs, Zod schemas |
-| 4 | [Function Calling & Tools](./04-function-calling-tools/README.md) | Extending AI capabilities with function calling and tools | Zod schemas, tool binding, type safety |
-| 5 | [Getting Started with Agents](./05-agents/README.md) | Building autonomous agents that reason and choose tools | ReAct pattern, agent loops, createAgent(), middleware |
-| 6 | [Model Context Protocol (MCP)](./06-mcp/README.md) | Connect AI to external services using the MCP standard | MCP servers, HTTP/stdio transports, tool integration, multi-server patterns |
-| 7 | [Documents, Embeddings & Semantic Search](./07-documents-embeddings-semantic-search/README.md) | Loading documents, creating embeddings, and building semantic search | Document loading, chunking, vector embeddings, similarity search |
-| 8 | [Building Agentic RAG Systems](./08-agentic-rag-systems/README.md) | Building RAG systems where agents intelligently decide when to search documents | Agentic RAG (agents decide when to search), retrieval tools, intelligent Q&A |
+| 0 | [Course Setup](https://saptarshimondal.github.io/langchainjs-for-beginners/00-course-setup/README) | Set up your development environment (local or cloud-based) | Node.js, Google Gemini, Codespaces, environment variables |
+| 1 | [Introduction to LangChain.js](https://saptarshimondal.github.io/langchainjs-for-beginners/01-introduction/README) | Understanding the framework and core concepts | LangChain fundamentals, first LLM call |
+| 2 | [Chat Models & Basic Interactions](https://saptarshimondal.github.io/langchainjs-for-beginners/02-chat-models/README) | Chat models, messages, and conversations | Message types, streaming, error handling, temperature |
+| 3 | [Prompts, Messages, and Structured Outputs](https://saptarshimondal.github.io/langchainjs-for-beginners/03-prompts-messages-outputs/README) | Working with prompts, message arrays, and type-safe outputs | Messages, templates, structured outputs, Zod schemas |
+| 4 | [Function Calling & Tools](https://saptarshimondal.github.io/langchainjs-for-beginners/04-function-calling-tools/README) | Extending AI capabilities with function calling and tools | Zod schemas, tool binding, type safety |
+| 5 | [Getting Started with Agents](https://saptarshimondal.github.io/langchainjs-for-beginners/05-agents/README) | Building autonomous agents that reason and choose tools | ReAct pattern, agent loops, createAgent(), middleware |
+| 6 | [Model Context Protocol (MCP)](https://saptarshimondal.github.io/langchainjs-for-beginners/06-mcp/README) | Connect AI to external services using the MCP standard | MCP servers, HTTP/stdio transports, tool integration, multi-server patterns |
+| 7 | [Documents, Embeddings & Semantic Search](https://saptarshimondal.github.io/langchainjs-for-beginners/07-documents-embeddings-semantic-search/README) | Loading documents, creating embeddings, and building semantic search | Document loading, chunking, vector embeddings, similarity search |
+| 8 | [Building Agentic RAG Systems](https://saptarshimondal.github.io/langchainjs-for-beginners/08-agentic-rag-systems/README) | Building RAG systems where agents intelligently decide when to search documents | Agentic RAG (agents decide when to search), retrieval tools, intelligent Q&A |
 
 Each chapter includes:
 - 📖 **Conceptual explanations** with real-world analogies
@@ -79,13 +85,13 @@ Before starting this course, you should be comfortable with:
 
 You'll need access to **Google Gemini**:
 
-- ✅ **Google Gemini API** - Free-tier API key via [Google AI Studio](https://aistudio.google.com/) for chat models (`gemini-3.1-flash-lite`, `gemini-3.5-flash-lite`) and embeddings (`gemini-embedding-2`) (see [Course Setup](./00-course-setup/README.md))
+- ✅ **Google Gemini API** - Free-tier API key via [Google AI Studio](https://aistudio.google.com/) for chat models (`gemini-3.1-flash-lite`, `gemini-3.5-flash-lite`) and embeddings (`gemini-embedding-2`) (see [Course Setup](https://saptarshimondal.github.io/langchainjs-for-beginners/00-course-setup/README))
 
 ---
 
 ## 📖 Course Resources and Additional Samples
 
-- **[Glossary](./GLOSSARY.md)** - Comprehensive definitions of all terms used throughout the course
+- **[Glossary](https://saptarshimondal.github.io/langchainjs-for-beginners/GLOSSARY)** - Comprehensive definitions of all terms used throughout the course
 - **[LangChain.js Documentation](https://docs.langchain.com/oss/javascript/langchain/overview)** - Official LangChain.js docs for deeper dives
 - **[Google AI Studio Documentation](https://ai.google.dev/gemini-api/docs)** - Official documentation for Gemini models and APIs
 - **[AI Agent with MCP tools Sample](https://github.com/microsoft/ai-agents-for-beginners-sample)** - Learn how to build a complete burger ordering system with a serverless API, web interfaces, and an MCP server that enables AI agents to browse menus, place orders, and track order status.
