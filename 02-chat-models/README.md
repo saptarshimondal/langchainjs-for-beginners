@@ -347,8 +347,8 @@ You can control how the AI responds by adjusting parameters. These can vary by p
   - Use for: Creative writing, brainstorming
 
 > **⚠️ Provider and Model Differences**:
-> - **Microsoft Foundry**: Generally limits temperature to 0.0-1.0 depending upon the model
-> - **Some models** (like gpt-5-mini): May only support the default temperature value (1) and reject other values
+> - **Google Gemini**: Generally supports temperature ranges from 0.0 to 2.0 (with 1.0 being balanced and typical defaults around 0.7-1.0 depending on the model)
+> - **Some models / versions**: May enforce specific limits or behave differently with values at extremes (like 0.0 vs 2.0)
 >
 > The temperature demo code includes error handling to gracefully skip unsupported values, so you can run it with any model without crashes.
 
@@ -447,7 +447,7 @@ temperatureComparison().catch(console.error);
 
 When you run this example with `tsx 02-chat-models/code/03-parameters.ts`, the output depends on your model:
 
-**With a model that supports all temperature values:**
+**With a model that supports all temperature settings (e.g. Gemini models):**
 
 ```
 🌡️ Temperature: 0
@@ -463,7 +463,7 @@ When you run this example with `tsx 02-chat-models/code/03-parameters.ts`, the o
 "Zyx-9 flickered into existence at precisely the wrong moment—right between the temporal rift and Dr. Kwan's morning coffee."
 ```
 
-**With a model that only supports default temperature (like gpt-5-mini):**
+**If running against a model that restricts certain temperature values:**
 
 ```
 Temperature: 0
@@ -486,8 +486,7 @@ Temperature: 2
    - Medium values (0.7-1.0): Balanced creativity and consistency
    - Higher values (1.5-2.0): More creative and varied responses
 
-⚠️  Note: Model support varies - some models only support specific values
-   For example, gpt-5-mini only supports temperature=1 (default)
+⚠️  Note: Model parameter support varies across AI providers and versions
 ```
 
 > **⚠️ Model-Specific Behavior**: The error handling allows the script to run successfully regardless of which temperature values your model supports. This demonstrates how real-world AI applications need to handle parameter constraints gracefully.
@@ -858,14 +857,9 @@ Next, you'll learn how to control those conversations with prompts and get struc
 ---
 
 ## 💬 Questions or stuck?
-
-If you get stuck or have any questions about building AI apps, join:
-
-[![Microsoft Foundry Discord](https://img.shields.io/badge/Discord-Microsoft_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
-
 If you have product feedback or errors while building visit:
 
-[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+[![Google Gemini Developer Forum](https://img.shields.io/badge/GitHub-Google_Gemini_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://discuss.ai.google.dev/)
 
 ---
 
@@ -883,12 +877,10 @@ LangChain.js provides `initChatModel()` for provider-agnostic initialization. Th
 - 🎯 **Provider-Agnostic Code**: Write once, work with any standard provider
 
 **When to Use `ChatOpenAI` (This Course)**:
-- ✅ **Microsoft Foundry**: OpenAI-compatible `/openai/v1` endpoint via `configuration.baseURL`
-- ✅ **Course env vars**: Uses `AI_API_KEY`, `AI_ENDPOINT`, and `AI_MODEL` (not `AZURE_OPENAI_*`)
+- ✅ **Google Gemini**: OpenAI-compatible `/chat/completions` endpoint via `configuration.baseURL`
+- ✅ **Course env vars**: Uses `AI_API_KEY`, `AI_ENDPOINT`, and `AI_MODEL`
 - ✅ **Learning**: More explicit and matches every other example
 - ✅ **Single Provider**: When you're primarily using one provider
-
-> **Note**: `initChatModel("azure_openai:...")` creates `AzureChatOpenAI` and expects `AZURE_OPENAI_*` variables. That is not how this course talks to Microsoft Foundry.
 
 ### Example: Provider-Agnostic Patterns
 
@@ -899,15 +891,15 @@ import { initChatModel } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
 
 // Switching between different provider types (conceptual)
-const openaiModel = await initChatModel("openai:gpt-5-mini", {
-  apiKey: process.env.OPENAI_API_KEY,
+const googleModel = await initChatModel("google-genai:gemini-3.1-flash-lite", {
+  apiKey: process.env.AI_API_KEY,
 });
 
 const anthropicModel = await initChatModel("anthropic:claude-sonnet-4-6", {
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-// Recommended for this course (Microsoft Foundry)
+// Recommended for this course (Google Gemini via OpenAI compatibility)
 const model = new ChatOpenAI({
   model: process.env.AI_MODEL,
   configuration: { baseURL: process.env.AI_ENDPOINT },
@@ -923,9 +915,9 @@ const model = new ChatOpenAI({
 
 | Feature | `ChatOpenAI` (Recommended) | `initChatModel()` |
 |---------|-------------|-------------------|
-| **Microsoft Foundry `/openai/v1`** | ✅ Explicit via `configuration.baseURL` | ⚠️ Not a match for `azure_openai` (uses `AzureChatOpenAI`) |
+| **Google Gemini OpenAI compatibility** | ✅ Explicit via `configuration.baseURL` | 🔄 Requires specific provider package integration |
 | **Type Safety** | ✅ Excellent | ✅ Good |
 | **Learning Curve** | ✅ Easier | 🔄 Moderate |
-| **Use Case** | This course's Foundry setup, or one provider | Switching between provider types |
+| **Use Case** | This course's Gemini setup, or one provider | Switching dynamically between provider types |
 
-**For this course**: Stick with `ChatOpenAI`. It matches Microsoft Foundry's OpenAI-compatible endpoint and the rest of the examples.
+**For this course**: Stick with `ChatOpenAI`. It matches Google Gemini's OpenAI-compatible endpoint and the rest of the examples.
