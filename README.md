@@ -77,9 +77,9 @@ Before starting this course, you should be comfortable with:
 
 ### AI Provider Account
 
-You'll need access to **Microsoft Foundry**:
+You'll need access to **Google Gemini**:
 
-- ✅ **Microsoft Foundry** - Deploy chat and embedding models for this course (see [Course Setup](./00-course-setup/README.md))
+- ✅ **Google Gemini API** - Free-tier API key via [Google AI Studio](https://aistudio.google.com/) for chat models (`gemini-3.1-flash-lite`, `gemini-3.5-flash-lite`) and embeddings (`gemini-embedding-2`) (see [Course Setup](./00-course-setup/README.md))
 
 ---
 
@@ -87,10 +87,8 @@ You'll need access to **Microsoft Foundry**:
 
 - **[Glossary](./GLOSSARY.md)** - Comprehensive definitions of all terms used throughout the course
 - **[LangChain.js Documentation](https://docs.langchain.com/oss/javascript/langchain/overview)** - Official LangChain.js docs for deeper dives
+- **[Google AI Studio Documentation](https://ai.google.dev/gemini-api/docs)** - Official documentation for Gemini models and APIs
 - **[AI Agent with MCP tools Sample](https://github.com/microsoft/ai-agents-for-beginners-sample)** - Learn how to build a complete burger ordering system with a serverless API, web interfaces, and an MCP server that enables AI agents to browse menus, place orders, and track order status.
-- **[Serverless AI Chat with RAG using LangChain.js](https://github.com/Azure-Samples/serverless-chat-langchainjs)** - Build a serverless AI chat experience with Retrieval-Augmented Generation using LangChain.js and Azure.
-- **[AI Agent with MCP tools using LangChain.js](https://github.com/Azure-Samples/mcp-agent-langchainjs)** - Build AI agents that interact with real-world APIs using the Model Context Protocol (MCP) that runs on Azure Functions.
-- **[AI Travel Agents Sample](https://github.com/Azure-Samples/azure-ai-travel-agents)** - Learn how to orchestrate multiple AI agents to create a travel planning application using Azure AI services that runs on Azure Container Apps.
 
 ---
 
@@ -146,13 +144,9 @@ You'll need access to **Microsoft Foundry**:
 
 ## Getting Help
 
-If you get stuck or have any questions about building AI apps, join:
+If you have product feedback, questions, or errors while building visit:
 
-[![Microsoft Foundry Discord](https://img.shields.io/badge/Discord-Microsoft_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
-
-If you have product feedback or errors while building visit:
-
-[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+[![Google Gemini Developer Forum](https://img.shields.io/badge/GitHub-Google_Gemini_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://discuss.ai.google.dev/)
 
 ---
 

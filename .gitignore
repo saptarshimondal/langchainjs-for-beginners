@@ -3,6 +3,8 @@ node_modules/
 
 # Build outputs
 dist/
+.vitepress/dist/
+.vitepress/cache/
 
 # Environment variables
 .env
@@ -35,3 +37,6 @@ coverage/
 .claude/
 .nvmrc
 blog/
+
+# Playground
+playground.ts
