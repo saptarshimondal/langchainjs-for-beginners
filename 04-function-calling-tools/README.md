@@ -245,14 +245,17 @@ Use `bindTools()` to make tools available to the LLM.
 
 Let's see how to use `.bindTools()` to make tools available and observe how the AI generates structured `tool_calls`.
 
+> [!NOTE]
+> For function calling and tool execution with Google Gemini (including thinking models), use **`ChatGoogleGenerativeAI`** from `@langchain/google-genai` rather than the OpenAI compatibility layer, ensuring native and reliable tool call schemas.
+
 **Key code you'll work with:**
 
 ```typescript
 // Create model and bind tools to it
-const model = new ChatOpenAI({
-  model: process.env.AI_MODEL,
-  configuration: { baseURL: process.env.AI_ENDPOINT },
-  apiKey: process.env.AI_API_KEY
+const model = new ChatGoogleGenerativeAI({
+  model: process.env.AI_MODEL!,
+  apiKey: process.env.AI_API_KEY,
+  temperature: 0,
 });
 
 const modelWithTools = model.bindTools([calculatorTool]);  // Make tool available to LLM
@@ -268,7 +271,7 @@ console.log(response.tool_calls);  // [{name: "calculator", args: {expression: "
 **Example code:**
 
 ```typescript
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { tool } from "langchain";
 import * as z from "zod";
 import { evaluate } from "mathjs";
@@ -290,10 +293,10 @@ const calculatorTool = tool(
 );
 
 // Create model and bind tools
-const model = new ChatOpenAI({
-  model: process.env.AI_MODEL,
-  configuration: { baseURL: process.env.AI_ENDPOINT },
-  apiKey: process.env.AI_API_KEY
+const model = new ChatGoogleGenerativeAI({
+  model: process.env.AI_MODEL!,
+  apiKey: process.env.AI_API_KEY,
+  temperature: 0,
 });
 
 const modelWithTools = model.bindTools([calculatorTool]);
@@ -354,7 +357,7 @@ Tool calls: [
 > **💡 Tip: Model Profiles (Beta)** - Not all models support tool calling. Before binding tools, you can check a model's capabilities using the `.profile` getter (note: this feature is in beta and subject to change):
 >
 > ```typescript
-> const model = new ChatOpenAI({ /* config */ });
+> const model = new ChatGoogleGenerativeAI({ /* config */ });
 >
 > // Check what the model supports before binding tools
 > if (model.profile.toolCalling) {
@@ -420,6 +423,13 @@ const weatherTool = tool(
     }),
   }
 );
+
+// Initialize model and bind tools
+const model = new ChatGoogleGenerativeAI({
+  model: process.env.AI_MODEL!,
+  apiKey: process.env.AI_API_KEY,
+  temperature: 0,
+});
 
 const modelWithTools = model.bindTools([weatherTool]);
 
@@ -555,6 +565,13 @@ const weatherTool = tool(
     schema: z.object({ city: z.string() }),
   }
 );
+
+// Initialize model with tools
+const model = new ChatGoogleGenerativeAI({
+  model: process.env.AI_MODEL!,
+  apiKey: process.env.AI_API_KEY,
+  temperature: 0,
+});
 
 const modelWithTools = model.bindTools([calculatorTool, searchTool, weatherTool]);
 
@@ -827,11 +844,6 @@ Next, you'll learn how agents autonomously decide which tools to use and orchest
 ---
 
 ## 💬 Questions or stuck?
-
-If you get stuck or have any questions about building AI apps, join:
-
-[![Microsoft Foundry Discord](https://img.shields.io/badge/Discord-Microsoft_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
-
 If you have product feedback or errors while building visit:
 
-[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+[![Google Gemini Developer Forum](https://img.shields.io/badge/GitHub-Google_Gemini_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://discuss.ai.google.dev/)

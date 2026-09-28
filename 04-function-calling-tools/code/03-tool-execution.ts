@@ -8,7 +8,7 @@
  * - "How would I handle errors that occur during tool execution?"
  */
 
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { AIMessage, HumanMessage, tool, ToolMessage } from "langchain";
 import * as z from "zod";
 import "dotenv/config";
@@ -33,9 +33,8 @@ async function main() {
   console.log("🔄 Complete Tool Execution Loop\n");
   console.log("=".repeat(80) + "\n");
 
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  const model = new ChatGoogleGenerativeAI({
+    model: process.env.AI_MODEL!,
     apiKey: process.env.AI_API_KEY,
   });
 

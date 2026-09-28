@@ -8,7 +8,7 @@
  * - "Can I prioritize certain tools over others by adjusting their descriptions?"
  */
 
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { tool } from "langchain";
 import * as z from "zod";
 import { evaluate } from "mathjs";
@@ -56,9 +56,8 @@ async function main() {
   console.log("🎛️ Multiple Tools Demo\n");
   console.log("=".repeat(80) + "\n");
 
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  const model = new ChatGoogleGenerativeAI({
+    model: process.env.AI_MODEL!,
     apiKey: process.env.AI_API_KEY,
   });
 
