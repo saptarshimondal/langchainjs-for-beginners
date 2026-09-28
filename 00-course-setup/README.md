@@ -1,18 +1,18 @@
 # Course Setup
 
-Welcome! Before we dive into building AI applications with LangChain.js, let's get your development environment ready. This chapter walks you through installing Node.js, setting up Microsoft Foundry for AI model access, and configuring your project environment. By the end, you'll have everything you need to start building with LangChain.js.
+Welcome! Before we dive into building AI applications with LangChain.js, let's get your development environment ready. This chapter walks you through installing Node.js, setting up Google Gemini for AI model access, and configuring your project environment. By the end, you'll have everything you need to start building with LangChain.js.
 
 ## Prerequisites
 
 - A GitHub account (free)
-- An Azure subscription (for Microsoft Foundry)
+- A Google account (for Google AI Studio / Gemini API access)
 - Basic command line knowledge
 - Text editor or IDE
 
 ## 📋 What You'll Set Up
 
 1. Node.js and npm
-2. Microsoft Foundry project, models, and API credentials
+2. Google Gemini API credentials
 3. Project dependencies
 4. Environment variables
 5. VS Code (recommended IDE)
@@ -32,7 +32,7 @@ Choose from one of the following options to set up your development environment:
 1. **GitHub Codespaces**: Use a cloud-based development environment.
 2. **Local Development**: Set up your environment on your machine.
 
-After Codespaces or local setup, continue with **Microsoft Foundry**, `.env` configuration, and the setup test. Those steps are required for both options.
+After Codespaces or local setup, continue with **Gemini API**, `.env` configuration, and the setup test. Those steps are required for both options.
 
 ---
 
@@ -40,10 +40,10 @@ After Codespaces or local setup, continue with **Microsoft Foundry**, `.env` con
 
 If you prefer not to set up your local environment, you can use **GitHub Codespaces** which is a cloud-based development environment that runs in your browser.
 
-1. **Create a Codespace**: Open the [langchainjs-for-beginners](https://github.com/microsoft/langchainjs-for-beginners) on GitHub and click on the green "Code" button. Select "Open with Codespaces" and "New codespace".
+1. **Create a Codespace**: Open the repository on GitHub and click on the green "Code" button. Select "Open with Codespaces" and "New codespace".
 2. **Wait for Initialization**: It will take a few moments to set up your environment.
 3. **Access the Terminal**: Once ready, open the terminal in Codespaces (Terminal > New Terminal).
-4. **Continue below**: Skip the local Node.js and clone steps. Go to [Set Up Microsoft Foundry](#set-up-microsoft-foundry), then configure `.env` and run the setup test.
+4. **Continue below**: Skip the local Node.js and clone steps. Go to [Set Up Gemini API](#set-up-gemini-api), then configure `.env` and run the setup test.
 
 ---
 
@@ -80,7 +80,7 @@ npm --version # Displays npm version
 
 ```bash
 # Clone the course repository
-git clone https://github.com/microsoft/langchainjs-for-beginners
+git clone https://github.com/saptarshimondal/langchainjs-for-beginners
 
 # Navigate to the project
 cd langchainjs-for-beginners
@@ -217,9 +217,9 @@ Before starting the course, make sure you have:
 - [ ] Node.js LTS installed (local development) or a Codespace ready
 - [ ] Project cloned and dependencies installed (`npm install`) if working locally
 - [ ] tsx installed globally (`npm install -g tsx`) if working locally
-- [ ] Microsoft Foundry project created with `gpt-5-mini`, `gpt-5`, and `text-embedding-3-small` deployed
-- [ ] `.env` file configured with your Microsoft Foundry API key, endpoint, and model names
-- [ ] Test script runs successfully
+- [ ] Gemini API key generated from Google AI Studio
+- [ ] `.env` file configured with your Gemini API key, endpoint (`https://generativelanguage.googleapis.com/v1beta/openai/`), and model names (`gemini-3.8-flash` or `gemini-3.1-flash-lite`, `gemini-embedding-2`)
+- [ ] Test script runs successfully (`tsx scripts/test-setup.ts`)
 - [ ] VS Code installed (optional but recommended for local development)
 
 ---
@@ -234,7 +234,8 @@ You're all set! Time to build your first AI application.
 
 ## 📚 Additional Resources
 
-- [Microsoft Foundry Documentation](https://learn.microsoft.com/azure/ai-foundry/)
+- [Google AI Studio](https://aistudio.google.com/)
+- [Gemini API Documentation](https://ai.google.dev/gemini-api/docs)
 - [Node.js Documentation](https://nodejs.org/docs/latest/api/)
 - [Environment Variables Best Practices](https://www.npmjs.com/package/dotenv)
 
@@ -258,39 +259,31 @@ You're all set! Time to build your first AI application.
 1. Make sure `.env` file exists in the project root
 2. Check that `.env` contains all required variables:
    - `AI_API_KEY=your_key`
-   - `AI_ENDPOINT=your_endpoint_url`
-   - `AI_MODEL=gpt-5-mini`
-   - `AI_EMBEDDING_MODEL=text-embedding-3-small`
+   - `AI_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/openai/`
+   - `AI_MODEL=gemini-3.8-flash`
+   - `AI_EMBEDDING_MODEL=gemini-embedding-2`
 3. No quotes needed around the values
 4. No spaces before or after the `=`
 
 ### Issue: "401 Unauthorized" or "Invalid API key"
 
 **Solutions**:
-1. Copy a fresh API key from your Microsoft Foundry project
+1. Copy a fresh API key from Google AI Studio ([aistudio.google.com](https://aistudio.google.com/))
 2. Make sure you copied the entire key
-3. Confirm `AI_ENDPOINT` includes `/openai/v1` at the end
+3. Confirm `AI_ENDPOINT` is set to `https://generativelanguage.googleapis.com/v1beta/openai/`
 4. Check for extra spaces in the `.env` file
 
 ### Issue: Rate limit errors
 
-**Solution**: Microsoft Foundry deployments have rate limits. If you hit them:
-- Wait a few minutes and retry
-- Check your deployment quota in the Microsoft Foundry portal
-- Use `gpt-5-mini` for most examples to stay within limits
+**Solution**: Google AI Studio free tier models have rate limits (requests per minute and per day). If you hit them:
+- Wait a few moments and retry
+- Check your rate limits and quotas in Google AI Studio
+- Use lightweight models such as `gemini-3.1-flash-lite` or `gemini-3.8-flash` to stay within limits
 
 ---
 
 ## 💬 Questions?
 
-If you get stuck or have any questions about building AI apps, join:
+If you have questions or run into issues with the course materials, please open an issue in the GitHub repo:
 
-[![Microsoft Foundry Discord](https://img.shields.io/badge/Discord-Microsoft_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
-
-If you have product feedback or errors while building visit:
-
-[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
-
-If you run into issues with the course materials, please open an issue in the GitHub repo:
-
-[![Course Issues](https://img.shields.io/badge/GitHub-LangChain.js_for_Beginners_Issues-blue?style=for-the-badge&logo=github&color=green&logoColor=fff)](https://github.com/microsoft/langchainjs-for-beginners/issues)
+[![Course Issues](https://img.shields.io/badge/GitHub-LangChain.js_for_Beginners_Issues-blue?style=for-the-badge&logo=github&color=green&logoColor=fff)](https://github.com/saptarshimondal/langchainjs-for-beginners/issues)

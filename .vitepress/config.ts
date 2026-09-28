@@ -184,7 +184,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/microsoft/langchainjs-for-beginners' },
+      { icon: 'github', link: 'https://github.com/saptarshimondal/langchainjs-for-beginners' },
     ],
 
     footer: {
