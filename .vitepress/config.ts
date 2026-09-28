@@ -1,11 +1,13 @@
 import { defineConfig } from 'vitepress';
+import { withMermaid } from 'vitepress-plugin-mermaid';
 import path from 'path';
 import fs from 'fs';
 
 // Determine base URL: use GitHub Pages repo subpath in CI, or '/' locally
 const base = process.env.GITHUB_ACTIONS ? '/langchainjs-for-beginners/' : '/';
 
-export default defineConfig({
+export default withMermaid(
+  defineConfig({
   title: 'LangChain.js for Beginners',
   description: 'A beginner-friendly course for learning LangChain.js - Build AI-powered applications with JavaScript and TypeScript',
   base,
@@ -14,6 +16,9 @@ export default defineConfig({
   ignoreDeadLinks: true,
 
   vite: {
+    optimizeDeps: {
+      include: ['mermaid', 'fastdom', 'fastdom-promised']
+    },
     plugins: [
       {
         name: 'resolve-relative-images',
@@ -192,4 +197,5 @@ export default defineConfig({
       copyright: 'Copyright © Dan Wahlin & Microsoft',
     },
   },
-});
+})
+);
