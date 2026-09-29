@@ -4,8 +4,8 @@
  * Run: npx tsx 04-function-calling-tools/solution/travel-assistant.ts
  */
 
-import { ChatOpenAI } from "@langchain/openai";
-import { tool } from "langchain";
+import { ChatGoogle } from "@langchain/google";
+import { tool, HumanMessage } from "langchain";
 import * as z from "zod";
 import "dotenv/config";
 
@@ -146,9 +146,8 @@ async function main() {
   console.log("🌍 Multi-Tool Travel Assistant\n");
   console.log("=".repeat(80) + "\n");
 
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  const model = new ChatGoogle({
+    model: process.env.AI_MODEL!,
     apiKey: process.env.AI_API_KEY,
   });
 
@@ -170,7 +169,7 @@ async function main() {
   for (const query of queries) {
     console.log(`\nQuery: "${query}"`);
 
-    const response = await modelWithTools.invoke(query);
+    const response = await modelWithTools.invoke([new HumanMessage(query)]);
 
     if (response.tool_calls && response.tool_calls.length > 0) {
       const toolCall = response.tool_calls[0];

@@ -44,12 +44,12 @@ Practice creating type-safe tools with Zod schemas, implementing the complete to
 **Hints**:
 ```typescript
 // 1. Import required modules
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogle } from "@langchain/google";
 import { AIMessage, HumanMessage, tool, ToolMessage } from "langchain";
 import * as z from "zod";
 import "dotenv/config";
 
-// 2. Create the ChatOpenAI model
+// 2. Create the ChatGoogle model
 
 // 3. Create a weather tool using the tool() function:
 //    - Define Zod schema with city (string) and units (enum) parameters
@@ -102,12 +102,12 @@ import "dotenv/config";
 **Hints**:
 ```typescript
 // 1. Import required modules
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogle } from "@langchain/google";
 import { tool } from "langchain";
 import * as z from "zod";
 import "dotenv/config";
 
-// 2. Create the ChatOpenAI model
+// 2. Create the ChatGoogle model
 
 // 3. Create three tools:
 //    Currency Converter - with amount, from, and to parameters

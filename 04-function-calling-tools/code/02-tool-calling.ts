@@ -8,8 +8,8 @@
  * - "Why does the LLM return structured tool calls instead of executing the function?"
  */
 
-import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { tool } from "langchain";
+import { ChatGoogle } from "@langchain/google";
+import { tool, HumanMessage } from "langchain";
 import * as z from "zod";
 import { evaluate } from "mathjs";
 import "dotenv/config";
@@ -34,7 +34,7 @@ async function main() {
   console.log("=".repeat(80) + "\n");
 
   // Create model and bind tools
-  const model = new ChatGoogleGenerativeAI({
+  const model = new ChatGoogle({
     model: process.env.AI_MODEL!,
     apiKey: process.env.AI_API_KEY,
   });
@@ -44,7 +44,7 @@ async function main() {
   console.log("🤖 Asking: What is 25 * 17?\n");
 
   // Invoke with a question
-  const response = await modelWithTools.invoke("What is 25 * 17?");
+  const response = await modelWithTools.invoke([new HumanMessage("What is 25 * 17?")]);
 
   console.log("Response content:", response.content);
   console.log("\nTool calls:", JSON.stringify(response.tool_calls, null, 2));

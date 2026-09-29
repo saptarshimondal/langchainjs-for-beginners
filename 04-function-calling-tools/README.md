@@ -246,13 +246,13 @@ Use `bindTools()` to make tools available to the LLM.
 Let's see how to use `.bindTools()` to make tools available and observe how the AI generates structured `tool_calls`.
 
 > [!NOTE]
-> For function calling and tool execution with Google Gemini (including thinking models), use **`ChatGoogleGenerativeAI`** from `@langchain/google-genai` rather than the OpenAI compatibility layer, ensuring native and reliable tool call schemas.
+> For function calling and tool execution with Google Gemini (including thinking models), use **`ChatGoogle`** from `@langchain/google` rather than the OpenAI compatibility layer, ensuring native and reliable tool call schemas.
 
 **Key code you'll work with:**
 
 ```typescript
 // Create model and bind tools to it
-const model = new ChatGoogleGenerativeAI({
+const model = new ChatGoogle({
   model: process.env.AI_MODEL!,
   apiKey: process.env.AI_API_KEY,
   temperature: 0,
@@ -261,7 +261,7 @@ const model = new ChatGoogleGenerativeAI({
 const modelWithTools = model.bindTools([calculatorTool]);  // Make tool available to LLM
 
 // LLM generates tool call (doesn't execute!)
-const response = await modelWithTools.invoke("What is 25 * 17?");
+const response = await modelWithTools.invoke([{ role: "user", content: "What is 25 * 17?" }]);
 console.log(response.tool_calls);  // [{name: "calculator", args: {expression: "25 * 17"}}]
 ```
 
@@ -271,7 +271,7 @@ console.log(response.tool_calls);  // [{name: "calculator", args: {expression: "
 **Example code:**
 
 ```typescript
-import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { ChatGoogle } from "@langchain/google";
 import { tool } from "langchain";
 import * as z from "zod";
 import { evaluate } from "mathjs";
@@ -293,7 +293,7 @@ const calculatorTool = tool(
 );
 
 // Create model and bind tools
-const model = new ChatGoogleGenerativeAI({
+const model = new ChatGoogle({
   model: process.env.AI_MODEL!,
   apiKey: process.env.AI_API_KEY,
   temperature: 0,
@@ -302,7 +302,7 @@ const model = new ChatGoogleGenerativeAI({
 const modelWithTools = model.bindTools([calculatorTool]);
 
 // Invoke with a question
-const response = await modelWithTools.invoke("What is 25 * 17?");
+const response = await modelWithTools.invoke([{ role: "user", content: "What is 25 * 17?" }]);
 
 console.log("Response:", response);
 console.log("\nTool calls:", response.tool_calls);
@@ -357,7 +357,7 @@ Tool calls: [
 > **💡 Tip: Model Profiles (Beta)** - Not all models support tool calling. Before binding tools, you can check a model's capabilities using the `.profile` getter (note: this feature is in beta and subject to change):
 >
 > ```typescript
-> const model = new ChatGoogleGenerativeAI({ /* config */ });
+> const model = new ChatGoogle({ /* config */ });
 >
 > // Check what the model supports before binding tools
 > if (model.profile.toolCalling) {
@@ -425,7 +425,7 @@ const weatherTool = tool(
 );
 
 // Initialize model and bind tools
-const model = new ChatGoogleGenerativeAI({
+const model = new ChatGoogle({
   model: process.env.AI_MODEL!,
   apiKey: process.env.AI_API_KEY,
   temperature: 0,
@@ -434,7 +434,7 @@ const model = new ChatGoogleGenerativeAI({
 const modelWithTools = model.bindTools([weatherTool]);
 
 // Step 1: Get tool call from LLM
-const response1 = await modelWithTools.invoke("What's the weather in Seattle?");
+const response1 = await modelWithTools.invoke([{ role: "user", content: "What's the weather in Seattle?" }]);
 console.log("Tool call:", response1.tool_calls[0]);
 
 // Step 2: Execute the tool
@@ -518,7 +518,7 @@ const queries = [
 ];
 
 for (const query of queries) {
-  const response = await modelWithTools.invoke(query);
+  const response = await modelWithTools.invoke([{ role: "user", content: query }]);
   console.log(response.tool_calls[0]?.name);  // Shows which tool LLM selected
 }
 ```
@@ -567,7 +567,7 @@ const weatherTool = tool(
 );
 
 // Initialize model with tools
-const model = new ChatGoogleGenerativeAI({
+const model = new ChatGoogle({
   model: process.env.AI_MODEL!,
   apiKey: process.env.AI_API_KEY,
   temperature: 0,
@@ -583,7 +583,7 @@ const queries = [
 ];
 
 for (const query of queries) {
-  const response = await modelWithTools.invoke(query);
+  const response = await modelWithTools.invoke([{ role: "user", content: query }]);
   console.log(`\nQuery: ${query}`);
   console.log("Chosen tool:", response.tool_calls[0]?.name);
   console.log("Args:", response.tool_calls[0]?.args);
