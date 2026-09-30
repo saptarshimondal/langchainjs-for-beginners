@@ -9,8 +9,8 @@
  * - "What strategies help the agent choose the right tool?"
  */
 
-import { ChatOpenAI } from "@langchain/openai";
-import { tool } from "langchain";
+import { ChatGoogle } from "@langchain/google";
+import { tool, HumanMessage } from "langchain";
 import { evaluate } from "mathjs";
 import * as z from "zod";
 import "dotenv/config";
@@ -57,9 +57,8 @@ async function main() {
   console.log("🎛️ Multi-Tool Agent Demo\n");
   console.log("=".repeat(80) + "\n");
 
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  const model = new ChatGoogle({
+    model: process.env.AI_MODEL!,
     apiKey: process.env.AI_API_KEY,
   });
 
@@ -74,7 +73,7 @@ async function main() {
   for (const query of queries) {
     console.log(`Query: "${query}"`);
 
-    const response = await modelWithTools.invoke(query);
+    const response = await modelWithTools.invoke([new HumanMessage(query)]);
 
     if (response.tool_calls && response.tool_calls.length > 0) {
       const toolCall = response.tool_calls[0];

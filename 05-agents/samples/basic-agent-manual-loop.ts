@@ -13,8 +13,8 @@
  * - "What happens if the agent can't answer the question?"
  */
 
-import { ChatOpenAI } from "@langchain/openai";
-import { AIMessage,HumanMessage,ToolMessage,tool } from "langchain";
+import { ChatGoogle } from "@langchain/google";
+import { AIMessage, HumanMessage, ToolMessage, tool } from "langchain";
 import { evaluate } from "mathjs";
 import * as z from "zod";
 import "dotenv/config";
@@ -37,9 +37,8 @@ async function main() {
   console.log("🤖 Basic Agent Demo\n");
   console.log("=".repeat(80) + "\n");
 
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  const model = new ChatGoogle({
+    model: process.env.AI_MODEL!,
     apiKey: process.env.AI_API_KEY,
   });
 

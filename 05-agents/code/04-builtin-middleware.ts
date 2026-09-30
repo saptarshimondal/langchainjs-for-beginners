@@ -6,7 +6,7 @@ import {
   SystemMessage,
   tool,
 } from "langchain";
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogle } from "@langchain/google";
 import * as z from "zod";
 import "dotenv/config";
 
@@ -55,9 +55,8 @@ async function main() {
   console.log("📚 Built-in Middleware: summarizationMiddleware Demo\n");
   console.log("Shows how conversations are automatically condensed.\n");
 
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  const model = new ChatGoogle({
+    model: process.env.AI_MODEL!,
     apiKey: process.env.AI_API_KEY,
   });
 

@@ -164,7 +164,7 @@ const lastMessage = response.messages[response.messages.length - 1];
 
 ```typescript
 import { createAgent, HumanMessage, tool } from "langchain";
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogle } from "@langchain/google";
 import { evaluate } from "mathjs";
 import * as z from "zod";
 import "dotenv/config";
@@ -186,9 +186,8 @@ const calculatorTool = tool(
 );
 
 // Create model
-const model = new ChatOpenAI({
+const model = new ChatGoogle({
   model: process.env.AI_MODEL,
-  configuration: { baseURL: process.env.AI_ENDPOINT },
   apiKey: process.env.AI_API_KEY,
 });
 
@@ -273,7 +272,7 @@ const queries = [
 
 ```typescript
 import { createAgent, HumanMessage, tool } from "langchain";
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogle } from "@langchain/google";
 import * as z from "zod";
 
 // Define multiple tools
@@ -750,11 +749,11 @@ After completing the remaining chapters, you'll add external service integration
 
 If you get stuck or have any questions about building AI apps, join:
 
-[![Microsoft Foundry Discord](https://img.shields.io/badge/Discord-Microsoft_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
+[![Google Gemini Discord](https://img.shields.io/badge/Discord-Google_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
 If you have product feedback or errors while building visit:
 
-[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+[![Google Gemini Developer Forum](https://img.shields.io/badge/GitHub-Google_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
 
 ---
 
@@ -769,11 +768,11 @@ Common issues you might encounter when building agents:
 **Fix**: Verify that you called `bindTools()` on your model:
 ```typescript
 // ❌ Wrong - forgot to bind tools
-const response = await model.invoke(query);
+const response = await model.invoke([new HumanMessage(query)]);
 
 // ✅ Correct - tools are bound
 const modelWithTools = model.bindTools([calculatorTool]);
-const response = await modelWithTools.invoke(query);
+const response = await modelWithTools.invoke([new HumanMessage(query)]);
 ```
 
 ### Agent loops forever or hits maxIterations

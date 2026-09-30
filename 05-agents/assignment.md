@@ -47,7 +47,7 @@ Practice building autonomous AI agents using the ReAct pattern, implementing age
 **Hints**:
 ```typescript
 // 1. Import required modules
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogle } from "@langchain/google";
 import { createAgent, HumanMessage, AIMessage, tool } from "langchain";
 import * as z from "zod";
 import "dotenv/config";
@@ -83,7 +83,7 @@ import "dotenv/config";
 //    Schema should have:
 //    - expression: z.string().describe("The mathematical expression...")
 
-// 4. Create the ChatOpenAI model with your environment variables
+// 4. Create the ChatGoogle model with your environment variables
 
 // 5. Create agent using createAgent():
 //    const agent = createAgent({
@@ -169,7 +169,7 @@ import "dotenv/config";
 **Hints**:
 ```typescript
 // 1. Import required modules (same as challenge)
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogle } from "@langchain/google";
 import { createAgent, HumanMessage, AIMessage, tool } from "langchain";
 import * as z from "zod";
 import "dotenv/config";
@@ -197,7 +197,7 @@ import "dotenv/config";
 //
 //    Schema needs: value1 (number), value2 (number), operation (enum)
 
-// 3. Create the ChatOpenAI model
+// 3. Create the ChatGoogle model
 
 // 4. Create agent using createAgent():
 //    Pass model and all four tools
